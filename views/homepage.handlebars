@@ -1,6 +1,6 @@
 <!-- Loop over each object in the blogPosts array -->
 {{#each blogPosts as |blogPost| }}
-<div class="blog-post">
+<div class="container blog-post">
     <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
         <h5 class="card-header text-bg-dark mb-3">{{blogPost.title}}
             <div class="text-end fs-6">Posted on: {{format_date blogPost.date_created}} by: {{user.name}}</div>

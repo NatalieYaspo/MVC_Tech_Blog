@@ -20,11 +20,11 @@
 
 
     {{#if blogPosts.length}}
-    <div class="col-md-6 blog-list">
+    <div class="container col-md-6 blog-list">
         <h3>Dashboard:</h3>
 
         {{#each blogPosts as |blogPost|}}
-        <div class="blog-post">
+        <div class="container blog-post">
             <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
                 <h5 class="card-header text-bg-dark mb-3"><a href="/project/{{blogPost.id}}">{{blogPost.title}}</a>
                 </h5>

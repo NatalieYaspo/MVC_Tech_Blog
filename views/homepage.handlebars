@@ -1,0 +1,11 @@
+<!-- Loop over each object in the blogPosts array -->
+{{#each blogPosts as |blogPost| }}
+<div class="blog-post">
+    <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
+        <h5 class="card-header text-bg-dark mb-3">{{post_header}} -- Posted on: {{post_date}}</h5>
+        <div class="card-body text-bg-light mb-3">
+            <p class="card-text">{{post_content}}</p>
+        </div>
+    </div>
+</div>
+{{/each}}

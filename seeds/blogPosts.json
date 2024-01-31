@@ -7,7 +7,7 @@
     {
         "title": "Authentication vs. Authorization",
         "content": "Authentication means confirming your own identity, whereas authorization means being allowed access to a system.",
-        "user_id": 1
+        "user_id": 4
       },
     {
         "title": "Object-Relational Mapping",

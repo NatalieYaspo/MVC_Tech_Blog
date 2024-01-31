@@ -1,0 +1,13 @@
+<div class="blog-post">
+    <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
+        <h5 class="card-header text-bg-dark mb-3"><a href="/project/{{blogPost.id}}">{{blogPost.title}}</a>
+        </h5>
+
+        <div class="card-body text-bg-light mb-3">
+            <p class="card-text">{{blogPost.content}}</p>
+            <div class="col-md-4">
+                <button class="btn btn-sm btn-danger" data-id="{{blogPost.id}}">DELETE</button>
+            </div>
+        </div>
+    </div>
+</div>

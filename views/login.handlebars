@@ -1,10 +1,11 @@
 {{!-- Log-in as a returning user. --}}
 <div class="container login">
-    <form class="form login-form"></form>
-        <div class="card text-bg-dark mb-3 m-2" style="max-width: 40%">
-            <h3 class="card-header text-bg-dark mb-3">Login</h3>
 
-            <div class="card-body text-bg-light mb-3">
+    <div class="card text-bg-dark mb-3 m-2" style="max-width: 40%">
+        <h3 class="card-header text-bg-dark mb-3">Login</h3>
+
+        <div class="card-body text-bg-light mb-3">
+            <form class="form login-form">
                 <div class="form-group m-2">
                     <label for="email-login" class="col-6 form-label">email:</label>
                     <div>
@@ -16,21 +17,23 @@
                     <div>
                         <input class="form-input" type="password" id="password-login" />
                     </div>
-                    
+
                 </div>
                 <button class="btn btn-primary" type="submit">login</button>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
+
 </div>
 
 {{!-- Sign up as a new user --}}
 <div class="container signup">
-    <form class="form signup-form"></form>
-        <div class="card text-bg-dark mb-3 m-2" style="max-width: 40%">
-            <h3 class="card-header text-bg-dark mb-3">New User Signup</h3>
 
-            <div class="card-body text-bg-light mb-3">
+    <div class="card text-bg-dark mb-3 m-2" style="max-width: 40%">
+        <h3 class="card-header text-bg-dark mb-3">New User Signup</h3>
+
+        <div class="card-body text-bg-light mb-3">
+            <form class="form signup-form">
                 <div class="form-group row m-2">
                     <label for="name-signup" class="col-6 form-label">name:</label>
                     <div>
@@ -50,9 +53,10 @@
                     </div>
                 </div>
                 <button class="btn btn-primary" type="submit">signup</button>
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
+
 </div>
 
 <script src="./js/login.js"></script>

@@ -24,28 +24,6 @@ router.get('/blogPost/:id', async (req, res) => {
   }
 });
 
-// router.get('/dashboard', async (req, res) => {
-//   try {
-//     const blogData = await BlogPost.findAll(req.params.user_id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
-
-//     const blogPost = blogData.map((blogPost) => blogPost.get({ plain: true }));
-//     console.log(blogPost);
-//     res.render('dashboard', {
-//       ...blogPosts,
-//       loggedIn: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlogPost = await BlogPost.create({

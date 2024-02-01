@@ -1,13 +1,16 @@
 <h3 class="text-center m-4">Dashboard</h3>
 
 {{#each blogposts as |blogpost|}}
-<div class="container blog-post">
-    <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
-        <h5 class="card-header text-bg-dark mb-3">{{blogpost.title}}
+<div class="container blog-post blog-list">
+    <div class="card text-bg-dark blog-list mb-3 m-2" style="max-width: 80%">
+        <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogpost.id}}">{{blogpost.title}}</a>
         <div class="text-start fs-6">{{format_date blogpost.date_created}}</div>
-        <button class="btn btn-sm btn-danger btn-end" data-id="{{blogpost.id}}">DELETE</button>
+        
         </h5>
+        <button class="btn btn-sm btn-secondary" data-id="{{blogpost.id}}">UPDATE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{blogpost.id}}">DELETE</button>
     </div>
+    
 </div>
 {{/each}}
 

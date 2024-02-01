@@ -1,6 +1,5 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
-    // console.log(event);
 
     const title = document.querySelector('#blog-title').value.trim();
     const content = document.querySelector('#blog-content').value.trim();
@@ -23,17 +22,19 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
+    
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        console.log(event);
+        
 
         const response = await fetch(`/api/blogPosts/${id}`, {
             method: 'DELETE',
         });
+        console.log(response);
 
         if (response.ok) {
-            document.location.replace('/blogPosts');
+            document.location.replace('/dashboard');
         } else {
             alert('Failed to delete blog post');
         }

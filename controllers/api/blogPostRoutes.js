@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { BlogPost } = require('../../models');
+const { BlogPost, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/blogPost/:id', async (req, res) => {
@@ -14,7 +14,7 @@ router.get('/blogPost/:id', async (req, res) => {
     });
 
     const blogPost = blogData.get({ plain: true });
-    console.log(blogPost);
+    // console.log(blogPost);
     res.render('blogPost', {
       ...blogPost,
       loggedIn: req.session.logged_in
@@ -23,6 +23,28 @@ router.get('/blogPost/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get('/dashboard', async (req, res) => {
+//   try {
+//     const blogData = await BlogPost.findAll(req.params.user_id, {
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'],
+//         },
+//       ],
+//     });
+
+//     const blogPost = blogData.map((blogPost) => blogPost.get({ plain: true }));
+//     console.log(blogPost);
+//     res.render('dashboard', {
+//       ...blogPosts,
+//       loggedIn: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 router.post('/', withAuth, async (req, res) => {
   try {

@@ -1,26 +1,23 @@
 <h3 class="text-center m-4">Dashboard</h3>
 
-{{#if blogPosts.length}}
+{{!-- {{#if blogPosts.user_id.length}} --}}
 {{#each blogPosts as |blogPost|}}
-<div class="conatiner blog-list">
 <div class="container blog-post">
     <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
-        <h5 class="card-header text-bg-dark mb-3">{{blogPost.title}}
-        <div class="text-end fs-6">{{format_date blogPost.date_created}}</div>
+        <h5 class="card-header text-bg-dark mb-3">{{blogPosts.title}}
+        {{!-- <div class="text-end fs-6">{{format_date blogPosts.date_created}}</div> --}}
         </h5>
 
         <div class="card-body text-bg-light mb-3">
-            <p class="card-text">{{blogPost.content}}</p>
+            <p class="card-text">{{blogPosts.content}}</p>
             <div class="col-md-4">
-                <button class="btn btn-sm btn-danger" data-id="{{blogPost.id}}">DELETE</button>
+                <button class="btn btn-sm btn-danger" data-id="{{blogPosts.id}}">DELETE</button>
             </div>
         </div>
     </div>
 </div>
-</div>
 {{/each}}
-</div>
-{{/if}}
+{{!-- {{/if}} --}}
 
 <div class="container blog-form">
     <form class="form new-blog-form">

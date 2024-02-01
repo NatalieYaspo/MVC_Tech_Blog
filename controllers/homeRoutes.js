@@ -18,9 +18,9 @@ router.get('/', async (req, res) => {
     const blogPosts = blogData.map((blogPost) => blogPost.get({ plain: true }));
     // console.log(blogPosts);
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-        blogPosts, 
-      loggedIn: req.session.logged_in 
+    res.render('homepage', {
+      blogPosts,
+      loggedIn: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -57,17 +57,34 @@ router.get('/dashboard', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: BlogPost }],
     });
-
+  
     const user = userData.get({ plain: true });
+    console.log(user);
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
 
-    res.render('dashboard', {
-      ...user,
-      loggedIn: req.session.logged_in
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+    // try {
+    //   const blogData = await BlogPost.findAll(req.params.user_id, {
+    //     include: [
+    //       {
+    //         model: User,
+    //         attributes: ['name'],
+    //       },
+    //     ],
+    //   });
+
+    //   const blogPost = blogData.map((blogPost) => blogPost.get({ plain: true }));
+    //   console.log(blogPost);
+
+      res.render('dashboard', {
+        ...user,
+        loggedIn: req.session.logged_in
+      });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route

@@ -2,9 +2,11 @@
 
 {{#if blogPosts.length}}
 {{#each blogPosts as |blogPost|}}
+<div class="conatiner blog-list">
 <div class="container blog-post">
     <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
-        <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogPost.id}}">{{blogPost.title}}</a>
+        <h5 class="card-header text-bg-dark mb-3">{{blogPost.title}}
+        <div class="text-end fs-6">{{format_date blogPost.date_created}}</div>
         </h5>
 
         <div class="card-body text-bg-light mb-3">
@@ -15,12 +17,13 @@
         </div>
     </div>
 </div>
+</div>
 {{/each}}
 </div>
 {{/if}}
 
 <div class="container blog-form">
-    <form class="form new-blog-form"></form>
+    <form class="form new-blog-form">
     <div class="card form-group text-bg-dark mb-3 m-2" style="max-width: 90%">
         <h5 class="card-header text-bg-dark mb-3">Create a New Blog Post:</h5>
 
@@ -34,7 +37,7 @@
                 <textarea class="form-input col-8" id="blog-content" name="blog-content"></textarea>
             </div>
             <div class="form-group m-2">
-                <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </div>

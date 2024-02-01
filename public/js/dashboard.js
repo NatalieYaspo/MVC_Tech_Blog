@@ -22,16 +22,15 @@ const newFormHandler = async (event) => {
 };
 
 const delButtonHandler = async (event) => {
+    event.preventDefault();
+    // alert('delete button pushed'); //works!
     
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
-        
-
         const response = await fetch(`/api/blogPosts/${id}`, {
             method: 'DELETE',
         });
-        console.log(response);
 
         if (response.ok) {
             document.location.replace('/dashboard');
@@ -47,4 +46,4 @@ document
 
 document
     .querySelector('.blog-list')
-    .addEventListener('submit', delButtonHandler);
+    .addEventListener('click', delButtonHandler);

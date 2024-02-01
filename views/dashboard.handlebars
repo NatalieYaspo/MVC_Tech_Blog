@@ -1,39 +1,39 @@
 <h3 class="text-center m-4">Dashboard</h3>
 
-{{#each blogposts as |blogpost|}}
 <div class="container blog-post blog-list">
-    <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
-        <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogpost.id}}">{{blogpost.title}}</a>
+{{#each blogposts as |blogpost|}}
+<div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
+    <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogpost.id}}">{{blogpost.title}}</a>
         <div class="text-start fs-6">{{format_date blogpost.date_created}}</div>
-        
-        </h5>
-        {{!-- Update button for future use. --}}
-        {{!-- <button class="btn btn-sm btn-secondary" type="submit" data-id="{{blogpost.id}}">UPDATE</button> --}}
-        <button class="btn btn-sm btn-danger" type="submit" data-id="{{blogpost.id}}">DELETE</button>
-    </div>
-    
+
+    </h5>
+    {{!-- Update button for future use. --}}
+    {{!-- <button class="btn btn-sm btn-secondary" type="submit" data-id="{{blogpost.id}}">UPDATE</button> --}}
+    <button class="btn btn-sm btn-danger" type="button" data-id="{{blogpost.id}}">DELETE</button>
 </div>
 {{/each}}
+</div>
+
 
 <div class="container blog-form">
     <form class="form new-blog-form">
-    <div class="card form-group text-bg-dark mb-3 m-2" style="max-width: 90%">
-        <h5 class="card-header text-bg-dark mb-3">Create a New Blog Post:</h5>
+        <div class="card form-group text-bg-dark mb-3 m-2" style="max-width: 90%">
+            <h5 class="card-header text-bg-dark mb-3">Create a New Blog Post:</h5>
 
-        <div class="card-body text-bg-light mb-4">
-            <div class="form-group m-2">
-                <label class="form-label" for="blog-title">blog title:</label>
-                <input class="form-input col-8" type="text" id="blog-title" name="blog-title" />
-            </div>
-            <div class="form-group m-2">
-                <label class="form-label" for="blog-content">content:</label>
-                <textarea class="form-input col-8" id="blog-content" name="blog-content"></textarea>
-            </div>
-            <div class="form-group m-2">
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="card-body text-bg-light mb-4">
+                <div class="form-group m-2">
+                    <label class="form-label" for="blog-title">blog title:</label>
+                    <input class="form-input col-8" type="text" id="blog-title" name="blog-title" />
+                </div>
+                <div class="form-group m-2">
+                    <label class="form-label" for="blog-content">content:</label>
+                    <textarea class="form-input col-8" id="blog-content" name="blog-content"></textarea>
+                </div>
+                <div class="form-group m-2">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </div>
         </div>
-    </div>
     </form>
 </div>
 

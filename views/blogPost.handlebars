@@ -1,3 +1,4 @@
+{{!-- Rendering the blog post and it's information --}}
 <div class="blog-post">
     <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
         <h5 class="card-header text-bg-dark mb-3">{{title}}
@@ -6,19 +7,38 @@
 
         <div class="card-body text-bg-light mb-3">
             <p class="card-text">{{content}}</p>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-secondary" data-id="{{id}}">Leave A Comment</button>
-            </div>
         </div>
     </div>
 </div>
 
-{{#if}}
+{{!-- form to leave a comment --}}
+
+<div class="container comment">
+
+    <div class="card text-bg-secondary mb-3 m-2" style="max-width: 80%">
+        <h5 class="card-header text-bg-secondary mb-3">Leave A Comment</h5>
+
+        <div class="card-body text-bg-light mb-3">
+            <form class="form comment-form">
+                <div class="form-group m-2">
+                    <label for="comment-des" class="col-6 form-label">comment:</label>
+                    <div>
+                        <textarea class="form-input col-8" id="comment-des" name="comment-des"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" type="submit" data-id="{{id}}">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{{!-- {{#if}}
 {{!-- Add code in here for if someone selects the leave a comment button --}}
 
-{{/if}}
+{{!-- {{/if}} --}}
 
-{{#if}}
+{{!-- {{#if}}
 {{!-- Add code in here for if this post has comments listed already. --}}
 
-{{/if}}
+{{!-- {{/if}} --}}

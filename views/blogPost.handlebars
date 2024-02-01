@@ -1,13 +1,24 @@
 <div class="blog-post">
     <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
-        <h5 class="card-header text-bg-dark mb-3"><a href="/project/{{blogPost.id}}">{{blogPost.title}}</a>
+        <h5 class="card-header text-bg-dark mb-3">{{title}}
+             <div class="text-end fs-6">Posted on: {{format_date date_created}} by: {{user.name}}</div>
         </h5>
 
         <div class="card-body text-bg-light mb-3">
-            <p class="card-text">{{blogPost.content}}</p>
+            <p class="card-text">{{content}}</p>
             <div class="col-md-4">
-                <button class="btn btn-sm btn-danger" data-id="{{blogPost.id}}">DELETE</button>
+                <button class="btn btn-sm btn-secondary" data-id="{{id}}">Leave A Comment</button>
             </div>
         </div>
     </div>
 </div>
+
+{{#if}}
+{{!-- Add code in here for if someone selects the leave a comment button --}}
+
+{{/if}}
+
+{{#if}}
+{{!-- Add code in here for if this post has comments listed already. --}}
+
+{{/if}}

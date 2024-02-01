@@ -14,7 +14,7 @@ Tis is a CMS-Style blog site that allows the user to publish articles, blog post
 
 ## Installation
 
-Open URL:
+Open URL: https://ny-mvc-tech-blog-fe6e7bdbfbb4.herokuapp.com/
 
 ## Usage
 

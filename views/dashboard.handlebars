@@ -1,6 +1,6 @@
 <h3 class="text-center m-4">Dashboard</h3>
 
-<div class="container blog-post blog-list">
+<div class="container blog-post ">
 {{#each blogposts as |blogpost|}}
 <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
     <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogpost.id}}">{{blogpost.title}}</a>
@@ -8,8 +8,8 @@
 
     </h5>
     {{!-- Update button for future use. --}}
-    {{!-- <button class="btn btn-sm btn-secondary" type="submit" data-id="{{blogpost.id}}">UPDATE</button> --}}
-    <button class="btn btn-sm btn-danger" type="button" data-id="{{blogpost.id}}">DELETE</button>
+    <button class="btn btn-sm btn-secondary" id="submit-btn" type="button" data-id="{{blogpost.id}}">UPDATE</button>
+    <button class="btn btn-sm btn-danger blog-list" id="delete-btn" type="button" data-id="{{blogpost.id}}">DELETE</button>
 </div>
 {{/each}}
 </div>

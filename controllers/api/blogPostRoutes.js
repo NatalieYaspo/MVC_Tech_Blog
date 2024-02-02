@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { BlogPost, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// GET a blog by ID
 router.get('/blogPost/:id', async (req, res) => {
   try {
     const blogData = await BlogPost.findByPk(req.params.id, {
@@ -24,6 +25,7 @@ router.get('/blogPost/:id', async (req, res) => {
   }
 });
 
+// CREATE a blog
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlogPost = await BlogPost.create({
@@ -37,6 +39,30 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+// UPDATE a blog //NEED TO MAKE WORK
+router.put('/:id', withAuth, async (req, res) => {
+  try {
+    const updatedBlogData = await BlogPost.update(
+      {
+        title: req.body.title,
+        content: req.body.content,
+      }, 
+      {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!updatedBlogData[0]) {
+      res.status(404).json({ message: 'No blog with this id!' });
+      return;
+    }
+    res.status(200).json(updatedBlogData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// DELETE a blog
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const blogData = await BlogPost.destroy({

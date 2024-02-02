@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { BlogPost, User } = require('../models');
 const withAuth = require('../utils/auth');
 
+//Render all active blog posts on the home page
 router.get('/', async (req, res) => {
   try {
     // Get all blogPosts and JOIN with user data
@@ -27,6 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+//GET a single blog when it is clicked on
 router.get('/blogPost/:id', withAuth, async (req, res) => {
   try {
     const blogData = await BlogPost.findByPk(req.params.id, {
@@ -49,7 +51,7 @@ router.get('/blogPost/:id', withAuth, async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
+//Go to dashboard for the signed in user
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
@@ -71,7 +73,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   });
 
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
+  // If the user is already logged in, redirect the request to dashboard
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;

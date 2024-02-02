@@ -31,7 +31,6 @@ const sess = {
   })
 };
 
-// Add express-session and store as Express.js middleware
 app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);

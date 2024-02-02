@@ -44,8 +44,9 @@ router.put('/:id', withAuth, async (req, res) => {
   try {
     const updatedBlogData = await BlogPost.update(
       {
-        title: req.body.title,
-        content: req.body.content,
+        ...req.body,
+        // title: req.body.title,
+        // content: req.body.content,
       }, 
       {
       where: {

@@ -1,5 +1,6 @@
 <h3 class="text-center m-4">Dashboard</h3>
 
+{{!-- shows active posts for current user --}}
 <div class="container blog-post ">
 {{#each blogposts as |blogpost|}}
 <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
@@ -8,13 +9,13 @@
 
     </h5>
     {{!-- Update button for future use. --}}
-    <button class="btn btn-sm btn-secondary" id="submit-btn" type="button" data-id="{{blogpost.id}}">UPDATE</button>
-    <button class="btn btn-sm btn-danger blog-list" id="delete-btn" type="button" data-id="{{blogpost.id}}">DELETE</button>
+    <button class="btn btn-sm btn-secondary" id="update-btn" type="button" data-id="{{blogpost.id}}">UPDATE</button>
+    <button class="btn btn-sm btn-danger blog-list delete-btn" id="delete-btn" type="button" data-id="{{blogpost.id}}">DELETE</button>
 </div>
 {{/each}}
 </div>
 
-
+{{!-- form to create a new blog --}}
 <div class="container blog-form">
     <form class="form new-blog-form">
         <div class="card form-group text-bg-dark mb-3 m-2" style="max-width: 90%">
@@ -36,5 +37,37 @@
         </div>
     </form>
 </div>
+
+{{!-- form to update a blog post once button is pushed --}}
+<div class="container update hide">
+
+    <div class="card text-bg-secondary mb-3 m-2" style="max-width: 80%">
+        <h5 class="card-header text-bg-secondary mb-3">UPDATE Blog</h5>
+
+        <div class="card-body text-bg-light mb-3">
+            <form class="form update-form">
+                <div class="card-body text-bg-light mb-4">
+                    <div class="form-group m-2">
+                        <label class="form-label title" for="blog-title">blog title:</label>
+                        <input class="form-input col-8" type="text" id="blog-title" name="blog-title" />
+                    </div>
+                    <div class="form-group m-2">
+                        <label class="form-label content" for="blog-content">content:</label>
+                        <textarea class="form-input col-8" id="blog-content" name="blog-content"></textarea>
+                    </div>
+                    <div class="form-group m-2">
+                        <button type="submit" id="submit-update-btn" class="btn btn-primary" data-id="{{id}}">Submit Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
 
 <script src="./js/dashboard.js"></script>

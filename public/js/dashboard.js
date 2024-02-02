@@ -1,9 +1,11 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
-
+    alert('submit button pushed');
+    
     const title = document.querySelector('#blog-title').value.trim();
     const content = document.querySelector('#blog-content').value.trim();
-
+    console.log(title);
+    
     if (title && content) {
         const response = await fetch(`/api/blogPosts`, {
             method: 'POST',
@@ -12,7 +14,7 @@ const newFormHandler = async (event) => {
                 'Content-Type': 'application/json',
             },
         });
-
+        
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
@@ -23,15 +25,15 @@ const newFormHandler = async (event) => {
 
 const delButtonHandler = async (event) => {
     event.preventDefault();
-    // alert('delete button pushed'); //works!
-
+    alert('delete button pushed'); //works!
+    
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
-
+        
         const response = await fetch(`/api/blogPosts/${id}`, {
             method: 'DELETE',
         });
-
+        
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
@@ -40,9 +42,21 @@ const delButtonHandler = async (event) => {
     }
 };
 
+const updateFormHandler = async (event) => {
+    event.preventDefault();
+    // alert('update button pushed'); //Works!
+    
+    var updateFormEl = document.querySelector('.update');
+    var createNewFormEl = document.querySelector('.blog-form');
+    // console.log(updateFormEl);
+    updateFormEl.classList.remove("hide");
+    createNewFormEl.classList.add("hide");
+};
+
 const updateButtonHandler = async (event) => {
     event.preventDefault();
-
+    alert('update button pushed'); //Works!
+    
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
 
@@ -60,6 +74,7 @@ const updateButtonHandler = async (event) => {
             alert('Failed to update blog post');
         }
     }
+    createNewFormEl.classList.remove("hide");
 };
 
 document
@@ -71,5 +86,9 @@ document
     .addEventListener('click', delButtonHandler);
 
 document
-    .querySelector('#submit-btn')
-    .addEventListener('submit', updateButtonHandler);
+    .querySelector('#update-btn')
+    .addEventListener('click', updateFormHandler);
+
+document
+    .querySelector('#submit-update-btn')
+    .addEventListener('click', updateButtonHandler);

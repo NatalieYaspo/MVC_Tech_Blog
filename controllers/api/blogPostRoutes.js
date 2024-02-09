@@ -40,24 +40,21 @@ router.post('/', withAuth, async (req, res) => {
 });
 
 // UPDATE a blog //NEED TO MAKE WORK
-router.put('/:id', withAuth, async (req, res) => {
-  try {
-    const updatedBlogData = await BlogPost.update(
+router.put('/:id', async (req, res) => {
+
+try {
+  const updatedBlog = await BlogPost.update(
       {
-        ...req.body,
-        // title: req.body.title,
-        // content: req.body.content,
+        title: req.body.title,
+        content: req.body.content,
       }, 
       {
       where: {
         id: req.params.id,
       },
-    });
-    if (!updatedBlogData[0]) {
-      res.status(404).json({ message: 'No blog with this id!' });
-      return;
     }
-    res.status(200).json(updatedBlogData);
+    );
+    res.status(200).json(updatedBlog);
   } catch (err) {
     res.status(500).json(err);
   }

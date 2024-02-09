@@ -2,17 +2,49 @@
 
 {{!-- shows active posts for current user --}}
 <div class="container blog-post ">
-{{#each blogposts as |blogpost|}}
-<div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
-    <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogpost.id}}">{{blogpost.title}}</a>
-        <div class="text-start fs-6">{{format_date blogpost.date_created}}</div>
+    {{#each blogposts as |blogpost|}}
+    <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
+        <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogpost.id}}">{{blogpost.title}}</a>
+            <div class="text-start fs-6">{{format_date blogpost.date_created}}</div>
+        </h5>
+        {{!-- Update Blog Section. To appear only once Update is clicked. --}}
+        <div class="container update hide">
 
-    </h5>
-    {{!-- Update button for future use. --}}
-    <button class="btn btn-sm btn-secondary" id="update-btn" type="button" data-id="{{blogpost.id}}">UPDATE</button>
-    <button class="btn btn-sm btn-danger blog-list delete-btn" id="delete-btn" type="button" data-id="{{blogpost.id}}">DELETE</button>
-</div>
-{{/each}}
+            <div class="card text-bg-secondary mb-3 m-2" style="max-width: 80%">
+                <h5 class="card-header text-bg-secondary mb-3">UPDATE Blog</h5>
+
+                <div class="card-body text-bg-light mb-3">
+                    <form class="form update-form">
+                        <div class="card-body text-bg-light mb-4">
+                            <div class="form-group m-2">
+                                <label class="form-label current-content" for="current-content">current content:</label>
+                                <div class="col-8" id="current-content" name="current-content">{{blogpost.content}}</div>
+                            </div>
+                            <div class="form-group m-2">
+                                <label class="form-label title" for="blog-title">update blog title:</label>
+                                <input class="form-input col-8" type="text" id="blog-title" name="blog-title" />
+                            </div>
+                            <div class="form-group m-2">
+                                <label class="form-label content" for="blog-content">update content:</label>
+                                <textarea class="form-input col-8" id="blog-content" name="blog-content"></textarea>
+                            </div>
+                            <div class="form-group m-2">
+                                <button type="submit" id="submit-update-btn" class="btn btn-primary"
+                                    data-id="{{blogpost.id}}">Submit Update</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        {{!-- Update button for future use. --}}
+        <button class="btn btn-sm btn-secondary" id="update-btn" type="button" data-id="{{blogpost.id}}">UPDATE</button>
+        <button class="btn btn-sm btn-danger blog-list delete-btn" id="delete-btn" type="button"
+            data-id="{{blogpost.id}}">DELETE</button>
+    </div>
+    {{/each}}
 </div>
 
 {{!-- form to create a new blog --}}
@@ -37,37 +69,6 @@
         </div>
     </form>
 </div>
-
-{{!-- form to update a blog post once button is pushed --}}
-<div class="container update hide">
-
-    <div class="card text-bg-secondary mb-3 m-2" style="max-width: 80%">
-        <h5 class="card-header text-bg-secondary mb-3">UPDATE Blog</h5>
-
-        <div class="card-body text-bg-light mb-3">
-            <form class="form update-form">
-                <div class="card-body text-bg-light mb-4">
-                    <div class="form-group m-2">
-                        <label class="form-label title" for="blog-title">blog title:</label>
-                        <input class="form-input col-8" type="text" id="blog-title" name="blog-title" />
-                    </div>
-                    <div class="form-group m-2">
-                        <label class="form-label content" for="blog-content">content:</label>
-                        <textarea class="form-input col-8" id="blog-content" name="blog-content"></textarea>
-                    </div>
-                    <div class="form-group m-2">
-                        <button type="submit" id="submit-update-btn" class="btn btn-primary" data-id="{{id}}">Submit Update</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-</div>
-
-
-
-
 
 
 <script src="./js/dashboard.js"></script>

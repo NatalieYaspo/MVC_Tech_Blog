@@ -48,17 +48,24 @@ const updateFormHandler = async (event) => {
     
     var updateFormEl = document.querySelector('.update');
     var createNewFormEl = document.querySelector('.blog-form');
+    var updateBtnEl = document.querySelector('#update-btn');
     // console.log(updateFormEl);
     updateFormEl.classList.remove("hide");
     createNewFormEl.classList.add("hide");
+    updateBtnEl.classList.add("hide");
 };
 
 const updateButtonHandler = async (event) => {
     event.preventDefault();
-    alert('update button pushed'); //Works!
+    // alert('update button pushed'); //Works!
+
+    const title = document.querySelector('#blog-title').value;
+    const content = document.querySelector('#blog-content').value;
     
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
+        // console.log('event target:', event.target);
+        // console.log('id:', id);
 
         const response = await fetch(`/api/blogPosts/${id}`, {
             method: 'PUT',
@@ -67,6 +74,7 @@ const updateButtonHandler = async (event) => {
                 'Content-Type': 'application/json',
             },
         });
+        console.log(response);
 
         if (response.ok) {
             document.location.replace('/dashboard');

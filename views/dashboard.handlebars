@@ -1,8 +1,14 @@
 <h3 class="text-center m-4">Dashboard</h3>
 
+<div>
+    <button type="submit" class="btn btn-primary" id="create-blog-btn">Create New Blog</button>
+</div>
+{{!-- for some reason, only the one on top works.  This is frustraiting. --}}
 {{!-- shows active posts for current user --}}
+{{#if blogposts.length}}
+<h4 class="m-1">MY BLOGS</h4>
+{{#each blogposts as |blogpost|}}
 <div class="container blog-post ">
-    {{#each blogposts as |blogpost|}}
     <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
         <h5 class="card-header text-bg-dark mb-3"><a href="/blogPost/{{blogpost.id}}">{{blogpost.title}}</a>
             <div class="text-start fs-6">{{format_date blogpost.date_created}}</div>
@@ -18,7 +24,8 @@
                         <div class="card-body text-bg-light mb-4">
                             <div class="form-group m-2">
                                 <label class="form-label current-content" for="current-content">current content:</label>
-                                <div class="col-8" id="current-content" name="current-content">{{blogpost.content}}</div>
+                                <div class="col-8" id="current-content" name="current-content">{{blogpost.content}}
+                                </div>
                             </div>
                             <div class="form-group m-2">
                                 <label class="form-label title" for="blog-title">update blog title:</label>
@@ -44,11 +51,12 @@
         <button class="btn btn-sm btn-danger blog-list delete-btn" id="delete-btn" type="button"
             data-id="{{blogpost.id}}">DELETE</button>
     </div>
-    {{/each}}
 </div>
+{{/each}}
+{{/if}}
 
 {{!-- form to create a new blog --}}
-<div class="container blog-form">
+<div class="container blog-form hide">
     <form class="form new-blog-form">
         <div class="card form-group text-bg-dark mb-3 m-2" style="max-width: 90%">
             <h5 class="card-header text-bg-dark mb-3">Create a New Blog Post:</h5>
@@ -69,6 +77,13 @@
         </div>
     </form>
 </div>
+
+
+
+
+
+
+
 
 
 <script src="./js/dashboard.js"></script>

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { BlogPost, User } = require('../models');
+const { BlogPost, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 //Render all active blog posts on the home page

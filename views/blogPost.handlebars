@@ -33,12 +33,19 @@
 
 </div>
 
-{{!-- {{#if}}
-{{!-- Add code in here for if someone selects the leave a comment button --}}
 
-{{!-- {{/if}} --}}
-
-{{!-- {{#if}}
+{{#if comments.length}}
+{{#each comments as |comment|}}
 {{!-- Add code in here for if this post has comments listed already. --}}
+<div class="comments-list">
+    <div class="card text-bg-dark mb-3 m-2" style="max-width: 80%">
+        <h5 class="card-header text-bg-dark mb-3">COMMENTS:</h5>
 
-{{!-- {{/if}} --}}
+        <div class="card-body text-bg-light mb-3">
+            <p class="card-text">{{comment.content}}</p>
+             <div class="text-end fs-6">Posted By: {{user.name}} on {{format_date comment.date_created}}</div>
+        </div>
+    </div>
+</div>
+{{/each}}
+{{/if}}

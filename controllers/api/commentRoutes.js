@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { BlogPost, User } = require('../../models');
+const { BlogPost, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// GET a blog by ID
-router.get('/blogPost/:id', async (req, res) => {
+// GET a comment by ID - but which id?
+router.get('/comment/:id', async (req, res) => {
   try {
     const blogData = await BlogPost.findByPk(req.params.id, {
       include: [
@@ -25,41 +25,22 @@ router.get('/blogPost/:id', async (req, res) => {
   }
 });
 
-// CREATE a blog
+// CREATE a comment
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newBlogPost = await BlogPost.create({
+    const newComment = await Comment.create({
       ...req.body,
-      user_id: req.session.user_id,
+      id: req.session.id,
     });
     console.log(req.body);
 
-    res.status(200).json(newBlogPost);
+    res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-// UPDATE a blog
-router.put('/:id', async (req, res) => {
 
-try {
-  const updatedBlog = await BlogPost.update(
-      {
-        title: req.body.title,
-        content: req.body.content,
-      }, 
-      {
-      where: {
-        id: req.params.id,
-      },
-    }
-    );
-    res.status(200).json(updatedBlog);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
 
 // DELETE a blog
 router.delete('/:id', withAuth, async (req, res) => {

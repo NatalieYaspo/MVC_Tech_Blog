@@ -1,10 +1,10 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
-    alert('submit button pushed');
+    // alert('submit button pushed'); //works
     
     const title = document.querySelector('#blog-title').value.trim();
     const content = document.querySelector('#blog-content').value.trim();
-    console.log(title);
+    console.log(document.querySelector('#blog-content').value.trim());
     
     if (title && content) {
         const response = await fetch(`/api/blogPosts`, {
@@ -23,9 +23,20 @@ const newFormHandler = async (event) => {
     }
 };
 
+const createButtonHandler = async (event) => {
+    event.preventDefault();
+    // alert('update button pushed'); //Works!
+    
+    var createNewFormEl = document.querySelector('.blog-form');
+    var createButtonEl = document.querySelector('#create-blog-btn');
+    // console.log(updateFormEl);
+    createNewFormEl.classList.remove("hide");
+    createButtonEl.classList.add("hide");
+};
+
 const delButtonHandler = async (event) => {
     event.preventDefault();
-    alert('delete button pushed'); //works!
+    // alert('delete button pushed'); //works!
     
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
@@ -61,6 +72,7 @@ const updateButtonHandler = async (event) => {
 
     const title = document.querySelector('#blog-title').value;
     const content = document.querySelector('#blog-content').value;
+    console.log(title);
     
     if (event.target.hasAttribute('data-id')) {
         const id = event.target.getAttribute('data-id');
@@ -84,6 +96,10 @@ const updateButtonHandler = async (event) => {
     }
     createNewFormEl.classList.remove("hide");
 };
+
+document
+    .querySelector('#create-blog-btn')
+    .addEventListener('click', createButtonHandler);
 
 document
     .querySelector('.new-blog-form')

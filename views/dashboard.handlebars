@@ -20,7 +20,7 @@
                 <h5 class="card-header text-bg-secondary mb-3">UPDATE Blog</h5>
 
                 <div class="card-body text-bg-light mb-3">
-                    <form class="form update-form">
+                    <form class="form update-form" data-id="{{blogpost.id}}">
                         <div class="card-body text-bg-light mb-4">
                             <div class="form-group m-2">
                                 <label class="form-label current-content" for="current-content">current content:</label>
@@ -63,12 +63,12 @@
 
             <div class="card-body text-bg-light mb-4">
                 <div class="form-group m-2">
-                    <label class="form-label" for="blog-title">blog title:</label>
-                    <input class="form-input col-8" type="text" id="blog-title" name="blog-title" />
+                    <label class="form-label" for="new-blog-title">blog title:</label>
+                    <input class="form-input col-8" type="text" id="new-blog-title" name="new-blog-title" />
                 </div>
                 <div class="form-group m-2">
-                    <label class="form-label" for="blog-content">content:</label>
-                    <textarea class="form-input col-8" id="blog-content" name="blog-content"></textarea>
+                    <label class="form-label" for="new-blog-content">content:</label>
+                    <textarea class="form-input col-8" id="new-blog-content" name="new-blog-content"></textarea>
                 </div>
                 <div class="form-group m-2">
                     <button type="submit" class="btn btn-primary">Submit</button>

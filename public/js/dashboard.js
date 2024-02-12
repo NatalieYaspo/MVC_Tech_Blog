@@ -1,11 +1,11 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
-    // alert('submit button pushed'); //works
     
-    const title = document.querySelector('#blog-title').value.trim();
-    const content = document.querySelector('#blog-content').value.trim();
-    console.log(document.querySelector('#blog-content').value.trim());
     
+    const title = document.querySelector('#new-blog-title').value.trim();
+    const content = document.querySelector('#new-blog-content').value.trim();
+    console.log(document.querySelector('#new-blog-content').value.trim());
+    alert('submit button pushed'); //works
     if (title && content) {
         const response = await fetch(`/api/blogPosts`, {
             method: 'POST',
